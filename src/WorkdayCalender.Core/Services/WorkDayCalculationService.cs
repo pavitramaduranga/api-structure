@@ -9,66 +9,36 @@ namespace WorkdayCalender.Core.Services
     public class WorkDayCalculationService : IWorkDayCalculationService
     {
 
-        public readonly IHolidayService _holidayService;
-        public WorkDayCalculationService(IHolidayService holidayService)
+        //public readonly IHolidayService _holidayService;
+        public WorkDayCalculationService()//(IHolidayService holidayService)
         {
-            _holidayService = holidayService ?? throw new ArgumentNullException(nameof(holidayService));
+           // _holidayService = holidayService ?? throw new ArgumentNullException(nameof(holidayService));
         }
 
         public async Task<CalculationResponse> CalculateWorkDay(CalculationRequest calculationRequest)
         {
-            var holidaysfromDb = _holidayService.GetHolidays();
-            //Meta data
+
+            //var holidaysfromDb = _holidayService.GetHolidays();
             DateTime[] recurringHolidays = new DateTime[]
             {
-                    //new DateTime(DateTime.Now.Year, 8, 1),
-                    new DateTime(2004, 5, 17)
-                    //new DateTime(DateTime.Now.Year, 12, 8)
+                new DateTime(2004, 5, 17)
             };
 
             DateTime[] holidays = new DateTime[]
             {
-                   // new DateTime(DateTime.Now.Year, 12, 25),
-                    new DateTime(2004, 5, 27)
-                    //new DateTime(DateTime.Now.Year, 5, 9)
+                new DateTime(2004, 5, 27)
             };
 
+            DateTime startDate = calculationRequest.StartDate;
+            double numberOfWorkDays = Math.Truncate(calculationRequest.Workdays);
 
-            //Calculation Data
-
-            int workdayStart = 8;
-            int workdayEnd = 16;
-
-            //Case 1 - ok
-            //DateTime startDate = new DateTime(2004, 5, 24, 18, 5, 0);
-            //double workdays = -5.5;
-
-            //Case 2 - error 1 day diference
-            //DateTime startDate = new DateTime(2004, 05, 24, 19, 03, 0);
-            //double workdays = 44.723656;
-
-            //Case 3 - ok 1sec diference
-            DateTime startDate = new DateTime(2004, 05, 24, 18, 03, 0);
-            double workdays = -6.7470217;
-
-            //Case 4 - ok
-            //DateTime startDate = new DateTime(2004, 05, 24, 08, 03, 0);
-            //double workdays = 12.782709;
-
-            //Case 5 - ok
-            //DateTime startDate = new DateTime(2004, 05, 24, 07, 03, 0);
-            //double workdays = 8.276628;
-
-
-            //Calculation
-            double numberOfWorkDateParts = workdays % 1;
-            double numberOfWorkDays = workdays - numberOfWorkDateParts;
+            double numberOfWorkDayFractionals = calculationRequest.Workdays - numberOfWorkDays;
             bool isMinusWorkDays = false;
+
             if (numberOfWorkDays < 0)
             {
                 isMinusWorkDays = true;
                 numberOfWorkDays *= -1;
-
             }
 
             for (int i = 0; i <= numberOfWorkDays;)
@@ -94,21 +64,35 @@ namespace WorkdayCalender.Core.Services
             }
 
             //Calculate Time
-            
-            double WorkHoursInMinutes = numberOfWorkDateParts * (workdayEnd - workdayStart) * 60;
+            double WorkHoursInMinutes = numberOfWorkDayFractionals * (calculationRequest.WorkdayEndHour - calculationRequest.WorkdayStartHour) * 60;
 
             if (isMinusWorkDays)
             {
-                startDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, workdayEnd, 00, 00);
+
+                if (calculationRequest.WorkdayStartHour <= startDate.Hour && calculationRequest.WorkdayEndHour >= startDate.Hour)
+                {
+                    startDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, calculationRequest.WorkdayEndHour, startDate.Minute, 0);
+                }
+                else
+                {
+                    startDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, calculationRequest.WorkdayEndHour, 0, 0);
+                }
                 startDate = startDate.AddMinutes(WorkHoursInMinutes);
             }
             else
             {
-                startDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, workdayStart, 00, 00);
+                if (calculationRequest.WorkdayStartHour <= startDate.Hour && calculationRequest.WorkdayEndHour >= startDate.Hour)
+                {
+                    startDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, calculationRequest.WorkdayStartHour, startDate.Minute, 0);
+                }
+                else
+                {
+                    startDate = new DateTime(startDate.Year, startDate.Month, startDate.Day, calculationRequest.WorkdayStartHour, 0, 0);
+                }
                 startDate = startDate.AddMinutes(WorkHoursInMinutes);
             }
 
-            CalculationResponse calculationResponse = new() { WorkDay = startDate };
+            CalculationResponse calculationResponse = new() { WorkDay = startDate.ToString("dd-MM-yyyy HH:mm") };
             return calculationResponse;
         }
     }

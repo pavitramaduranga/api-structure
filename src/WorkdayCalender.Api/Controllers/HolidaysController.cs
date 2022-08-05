@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WorkdayCalender.Core.Interfaces.Services;
 using WorkdayCalender.Core.Models;
@@ -21,7 +19,7 @@ namespace WorkdayCalender.Api.Controllers
         }
 
         /// <summary>
-        /// Gell all the Holidays
+        /// Get all the Holidays
         /// </summary>
         /// <returns></returns>
         [HttpGet]

@@ -8,6 +8,6 @@ namespace WorkdayCalender.Core.Models
 {
     public class CalculationResponse
     {
-        public DateTime WorkDay { get; set; }
+        public string WorkDay { get; set; }
     }
 }

@@ -1,8 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WorkdayCalender.Api.Helper
 {
@@ -10,7 +6,7 @@ namespace WorkdayCalender.Api.Helper
     {
         public MapperProfile()
         {
-            CreateMap<WorkdayCalender.Infastructure.Entities.Holiday, WorkdayCalender.Core.Models.Holiday>().ReverseMap();
+            CreateMap<Infastructure.Entities.Holiday, Core.Models.Holiday>().ReverseMap();
         }
     }
 }
