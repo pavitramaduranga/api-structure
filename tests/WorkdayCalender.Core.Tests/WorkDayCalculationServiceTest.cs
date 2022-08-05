@@ -1,7 +1,9 @@
 ﻿using System;
+using WorkdayCalender.Core.Interfaces.Repositories;
 using WorkdayCalender.Core.Interfaces.Services;
 using WorkdayCalender.Core.Models;
 using WorkdayCalender.Core.Services;
+using WorkdayCalender.Infastructure.Repositories;
 using Xunit;
 
 namespace WorkdayCalender.Core.Tests
@@ -9,6 +11,7 @@ namespace WorkdayCalender.Core.Tests
     public class WorkDayCalculationServiceTest
     {
         private readonly IWorkDayCalculationService _service;
+        public readonly IHolidayService _holidayService;
         private readonly CalculationRequest calculationRequest = new()
         {
             WorkdayStartHour = 8,
@@ -16,6 +19,7 @@ namespace WorkdayCalender.Core.Tests
         };
         public WorkDayCalculationServiceTest()
         {
+            //_holidayService = new HolidayServiceFake();
             _service = new WorkDayCalculationService();
         }
 

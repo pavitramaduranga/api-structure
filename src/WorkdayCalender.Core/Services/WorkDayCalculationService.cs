@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WorkdayCalender.Core.Interfaces.Services;
@@ -10,31 +11,32 @@ namespace WorkdayCalender.Core.Services
     {
 
         //public readonly IHolidayService _holidayService;
-        public WorkDayCalculationService()//(IHolidayService holidayService)
+        //public WorkDayCalculationService(IHolidayService holidayService)
+        //{
+        //    holidayService = holidayService ?? throw new ArgumentNullException(nameof(holidayService));
+        //}
+
+        public WorkDayCalculationService()
         {
-           // _holidayService = holidayService ?? throw new ArgumentNullException(nameof(holidayService));
+            //holidayService = holidayService ?? throw new ArgumentNullException(nameof(holidayService));
         }
 
         public async Task<CalculationResponse> CalculateWorkDay(CalculationRequest calculationRequest)
         {
 
-            //var holidaysfromDb = _holidayService.GetHolidays();
-            DateTime[] recurringHolidays = new DateTime[]
-            {
-                new DateTime(2004, 5, 17)
-            };
+            //var holidaysfromDb = await _holidayService.GetHolidays();
 
-            DateTime[] holidays = new DateTime[]
-            {
-                new DateTime(2004, 5, 27)
+            var holidaysfromDb = new List<Holiday>() {
+                new Holiday() { HolidayDate=new DateTime(2004, 5, 17), IsRecurringLeave = true },
+                new Holiday() { HolidayDate=new DateTime(2004, 5, 27), IsRecurringLeave = false }
             };
 
             DateTime startDate = calculationRequest.StartDate;
             double numberOfWorkDays = Math.Truncate(calculationRequest.Workdays);
 
             double numberOfWorkDayFractionals = calculationRequest.Workdays - numberOfWorkDays;
-            bool isMinusWorkDays = false;
 
+            bool isMinusWorkDays = false;
             if (numberOfWorkDays < 0)
             {
                 isMinusWorkDays = true;
@@ -43,9 +45,8 @@ namespace WorkdayCalender.Core.Services
 
             for (int i = 0; i <= numberOfWorkDays;)
             {
-                bool isRecurringHoliday = recurringHolidays.Any(d => d.Month == startDate.Month && d.Day == startDate.Day);
-                bool isHoliday = holidays.Any(d => d.Year == startDate.Year && d.Month == startDate.Month && d.Day == startDate.Day);
-                if ((startDate.DayOfWeek != DayOfWeek.Saturday) && (startDate.DayOfWeek != DayOfWeek.Sunday) && !isRecurringHoliday && !isHoliday)
+                bool isHoliday = IsGivenDateHoliday(startDate, holidaysfromDb);
+                if ((startDate.DayOfWeek != DayOfWeek.Saturday) && (startDate.DayOfWeek != DayOfWeek.Sunday) && !isHoliday)
                 {
                     i++;
                 }
@@ -94,6 +95,14 @@ namespace WorkdayCalender.Core.Services
 
             CalculationResponse calculationResponse = new() { WorkDay = startDate.ToString("dd-MM-yyyy HH:mm") };
             return calculationResponse;
+        }
+
+        private bool IsGivenDateHoliday(DateTime startDate, IEnumerable<Holiday> holidaysfromDb)
+        {
+            bool isRecurringHoliday = holidaysfromDb.Any(d => d.HolidayDate.Month == startDate.Month && d.HolidayDate.Day == startDate.Day && d.IsRecurringLeave);
+            bool isHoliday = holidaysfromDb.Any(d => d.HolidayDate.ToShortDateString() == startDate.ToShortDateString() && !d.IsRecurringLeave);
+           
+            return isRecurringHoliday || isHoliday;
         }
     }
 }

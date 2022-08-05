@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\WorkdayCalender.Core\WorkdayCalender.Core.csproj" />
+    <ProjectReference Include="..\..\src\WorkdayCalender.Infastructure\WorkdayCalender.Infastructure.csproj" />
   </ItemGroup>
 
 </Project>
