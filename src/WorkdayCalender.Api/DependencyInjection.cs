@@ -29,6 +29,7 @@ namespace WorkdayCalender.Api
 
             services.AddScoped<IHolidayService, HolidayService>();
             services.AddScoped<IWorkDayCalculationService, WorkDayCalculationService>();
+            services.AddScoped<ICalculationService, CalculationService>();
             services.AddScoped<IWorkdayCalenderRepository, WorkdayCalenderRepository>();
 
             return services;
