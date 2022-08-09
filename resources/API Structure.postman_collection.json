@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "acc06ca4-0f56-4d9d-acd2-2b6989956815",
+		"name": "API Structure",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2323569"
+	},
+	"item": [
+		{
+			"name": "getholidays",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"holidayDate\": \"2004-05-17T00:00:00\",\r\n    \"isRecurringLeave\": true\r\n  },\r\n  {\r\n    \"holidayDate\": \"2004-05-27T00:00:00\",\r\n    \"isRecurringLeave\": false\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:64857/api/holidays/getholidays",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64857",
+					"path": [
+						"api",
+						"holidays",
+						"getholidays"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getholidays",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"holidayDate\": \"2004-05-17T00:00:00\",\r\n    \"isRecurringLeave\": true\r\n  },\r\n  {\r\n    \"holidayDate\": \"2004-05-27T00:00:00\",\r\n    \"isRecurringLeave\": false\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:64857/api/holidays/getholidays",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "64857",
+							"path": [
+								"api",
+								"holidays",
+								"getholidays"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Aug 2022 03:16:59 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"holidayDate\": \"2004-05-17T00:00:00\",\n        \"isRecurringLeave\": true\n    },\n    {\n        \"holidayDate\": \"2004-05-27T00:00:00\",\n        \"isRecurringLeave\": false\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "createholiday",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"holidayDate\": \"2022-08-09T03:17:36.283Z\",\r\n  \"isRecurringLeave\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:64857/api/holidays/createholiday",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64857",
+					"path": [
+						"api",
+						"holidays",
+						"createholiday"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "createholiday",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"holidayDate\": \"2022-08-09T03:17:36.283Z\",\r\n  \"isRecurringLeave\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:64857/api/holidays/createholiday",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "64857",
+							"path": [
+								"api",
+								"holidays",
+								"createholiday"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Aug 2022 03:19:02 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "true"
+				}
+			]
+		},
+		{
+			"name": "deleteholiday",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:64857/api/holidays/deleteholiday?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64857",
+					"path": [
+						"api",
+						"holidays",
+						"deleteholiday"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteholiday",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:64857/api/holidays/deleteholiday?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "64857",
+							"path": [
+								"api",
+								"holidays",
+								"deleteholiday"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Aug 2022 03:21:58 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4"
+						}
+					],
+					"cookie": [],
+					"body": "true"
+				}
+			]
+		},
+		{
+			"name": "Calculate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"workdayStartHour\": 8,\r\n  \"workdayEndHour\": 16,\r\n  \"startDate\": \"2004-05-24T18:05:00.000Z\",\r\n  \"workdays\": -5.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:64857/api/workdaycalculation/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64857",
+					"path": [
+						"api",
+						"workdaycalculation",
+						"calculate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Calculate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"workdayStartHour\": 8,\r\n  \"workdayEndHour\": 16,\r\n  \"startDate\": \"2004-05-24T18:05:00.000Z\",\r\n  \"workdays\": -5.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:64857/api/workdaycalculation/calculate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "64857",
+							"path": [
+								"api",
+								"workdaycalculation",
+								"calculate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Aug 2022 03:28:03 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"workDay\": \"14-05-2004 12:00\"\n}"
+				}
+			]
+		}
+	]
+}

@@ -13,11 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0F6C9607
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkdayCalender.Api.Tests", "tests\WorkdayCalender.Api.Tests\WorkdayCalender.Api.Tests.csproj", "{8A2F4F09-9608-4B32-84E0-D1B747CDE592}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkdayCalender.Core", "src\WorkdayCalender.Core\WorkdayCalender.Core.csproj", "{5D87CF73-B305-47F7-A465-DD669E4B6BC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkdayCalender.Core", "src\WorkdayCalender.Core\WorkdayCalender.Core.csproj", "{5D87CF73-B305-47F7-A465-DD669E4B6BC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkdayCalender.Infastructure.Tests", "tests\WorkdayCalender.Infastructure.Tests\WorkdayCalender.Infastructure.Tests.csproj", "{E2E79B62-7BD3-4741-AB5D-927E703DC1D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkdayCalender.Core.Tests", "tests\WorkdayCalender.Core.Tests\WorkdayCalender.Core.Tests.csproj", "{8E103CD3-B8E3-4C06-B6DC-2B0885EFFD9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkdayCalender.Core.Tests", "tests\WorkdayCalender.Core.Tests\WorkdayCalender.Core.Tests.csproj", "{8E103CD3-B8E3-4C06-B6DC-2B0885EFFD9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{ACDFEDCC-B607-4A02-B36A-F6C3457704AA}"
+	ProjectSection(SolutionItems) = preProject
+		resources\API Structure.postman_collection.json = resources\API Structure.postman_collection.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
