@@ -40,11 +40,6 @@ namespace WorkdayCalender.Core.Services
             }
         }
 
-        public async Task<Holiday> GetHolidayById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<Holiday>> GetHolidays()
         {
             return await _workdayCalenderRepository.GetHolidays();

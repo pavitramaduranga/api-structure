@@ -20,10 +20,6 @@ namespace WorkdayCalender.Api.Controllers
             _workDayCalculationService = workDayCalculationService ?? throw new ArgumentNullException(nameof(workDayCalculationService));
         }
 
-        /// <summary>
-        /// Get all the Holidays
-        /// </summary>
-        /// <returns></returns>
         [HttpPost]
         [Route("calculate")]
         public async Task<ActionResult<CalculationResponse>> CalculateWorkDays(CalculationRequest calculationRequest)

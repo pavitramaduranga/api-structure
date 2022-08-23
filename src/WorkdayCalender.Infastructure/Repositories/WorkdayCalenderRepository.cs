@@ -41,11 +41,6 @@ namespace WorkdayCalender.Infastructure.Repositories
             return false;
         }
 
-        public async Task<Holiday> GetHolidayById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<Holiday>> GetHolidays()
         {
             var dbHolidays = await _dbContext.Holidays.ToListAsync().ConfigureAwait(false);

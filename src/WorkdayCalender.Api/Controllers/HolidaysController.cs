@@ -18,10 +18,6 @@ namespace WorkdayCalender.Api.Controllers
             _holidayService = holidayService ?? throw new ArgumentNullException(nameof(holidayService));
         }
 
-        /// <summary>
-        /// Get all the Holidays
-        /// </summary>
-        /// <returns></returns>
         [HttpGet]
         [Route("getholidays")]
         public async Task<ActionResult<IEnumerable<Holiday>>> GetHolidays()
@@ -34,10 +30,6 @@ namespace WorkdayCalender.Api.Controllers
             return Ok(response);
         }
 
-        /// <summary>
-        /// Delete Holiday
-        /// </summary>
-        /// <returns></returns>
         [HttpPost]
         [Route("createHoliday")]
         public async Task<ActionResult<bool>> CreateHoliday(Holiday holiday)
@@ -50,10 +42,6 @@ namespace WorkdayCalender.Api.Controllers
             return Ok(response);
         }
 
-        /// <summary>
-        /// Delete Holiday
-        /// </summary>
-        /// <returns>true/false</returns>
         [HttpDelete]
         [Route("deleteHoliday")]
         public async Task<ActionResult<bool>> DeleteHoliday(int id)

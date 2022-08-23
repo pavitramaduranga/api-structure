@@ -39,8 +39,6 @@ namespace WorkdayCalender.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-
             }
 
             //Extension method for Swagger configuration.

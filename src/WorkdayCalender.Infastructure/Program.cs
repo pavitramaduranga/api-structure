@@ -6,7 +6,6 @@ namespace WorkdayCalender.Infastructure
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }

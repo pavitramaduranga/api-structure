@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WorkdayCalender.Infastructure.Entities;
 
@@ -29,7 +27,6 @@ namespace WorkdayCalender.Infastructure.Context
                 Holidays.AddRange(holidays);
                 SaveChanges();
             }
-
         }
     }
 }
